@@ -16,3 +16,4 @@ WordCountMR/pom.xml -text
 WordCountMR/src/main/java/net/cryp7/range/WordCountMR/Driver.java -text
 WordCountMR/src/main/java/net/cryp7/range/WordCountMR/MyMapper.java -text
 WordCountMR/src/main/java/net/cryp7/range/WordCountMR/MyReducer.java -text
+WordCountMR/src/main/java/net/cryp7/range/WordCountMR/WordCountMR.java -text
