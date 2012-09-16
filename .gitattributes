@@ -1,10 +1,10 @@
 * text=auto !eol
+HBaseMR/LICENSE.txt -text
 HBaseMR/pom.xml -text
 HBaseMR/src/main/java/net/cryp7/range/HBaseMR/Driver.java -text
 HBaseMR/src/main/java/net/cryp7/range/HBaseMR/Ingest.java -text
 HBaseMR/src/main/java/net/cryp7/range/HBaseMR/MyMapper.java -text
 HBaseMR/src/main/java/net/cryp7/range/HBaseMR/MyReducer.java -text
-/LICENSE.txt -text
 WordCountMR/input/bar.txt -text
 WordCountMR/input/foo.txt -text
 WordCountMR/pom.xml -text
