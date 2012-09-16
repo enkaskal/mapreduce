@@ -4,9 +4,6 @@ import java.io.IOException;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
-import org.apache.hadoop.hbase.HColumnDescriptor;
-import org.apache.hadoop.hbase.HTableDescriptor;
-import org.apache.hadoop.hbase.client.HBaseAdmin;
 import org.apache.hadoop.hbase.client.Scan;
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable;
 import org.apache.hadoop.hbase.mapreduce.TableMapReduceUtil;
@@ -25,6 +22,11 @@ public class Driver
 	public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException 
 	{
 		Configuration conf = HBaseConfiguration.create();
+		conf.set("fs.default.name", "hdfs://hadoop.range.cryp7.net:8020");
+		conf.set("hbase.zookeeper.quorum", "hadoop.range.cryp7.net");
+		conf.set("hbase.zookeeper.property.clientPort", "2181");
+		conf.set("hbase.master", "hadoop.range.cryp7.net:60000");
+		conf.set("mapred.job.tracker", "hadoop.range.cryp7.net:8021");
 		
         Job job = new Job(conf, "HBaseMR");
         job.setJarByClass(MyMapper.class);
@@ -32,21 +34,6 @@ public class Driver
         Scan scan = new Scan();
         scan.setCacheBlocks(true);
         scan.setCaching(5000);
-        
-        HBaseAdmin admin = new HBaseAdmin(conf);
-        String outputTable = "summary_user";
-        if ( admin.tableExists(outputTable) )
-        {
-        	/* if exists drop first */
-        	admin.disableTable(outputTable);
-        	admin.deleteTable(outputTable);
-        }
-        
-        HTableDescriptor descriptor = new HTableDescriptor(outputTable);
-        descriptor.addFamily(new HColumnDescriptor("details"));
-        admin.createTable(descriptor);
-        
-        admin.close();
         
         TableMapReduceUtil.initTableMapperJob(
         		"access_logs", 

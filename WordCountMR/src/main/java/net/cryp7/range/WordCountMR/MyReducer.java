@@ -1,30 +1,23 @@
 package net.cryp7.range.WordCountMR;
 
 import java.io.IOException;
-import java.util.Iterator;
 
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapred.MapReduceBase;
-import org.apache.hadoop.mapred.OutputCollector;
-import org.apache.hadoop.mapred.Reducer;
-import org.apache.hadoop.mapred.Reporter;
+import org.apache.hadoop.mapreduce.Reducer;
 
-public class MyReducer extends MapReduceBase implements Reducer<Text, Text, Text, Text>
+public class MyReducer extends Reducer<Text, Text, Text, Text>
 {
 	@Override
-	public void reduce( Text key, Iterator<Text> values,
-			OutputCollector<Text, Text> output,
-			Reporter reporter)
-	throws IOException
+	public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException
 	{
 		String fnames = new String("");
 		
-		while ( values.hasNext() )
+		for ( Text val : values )
 		{
-			fnames += values.next().toString() + ", ";
+			fnames += val.getBytes().toString() + ", ";
 		}
 		
-		output.collect(key,  new Text(fnames));
+		context.write(key, new Text(fnames));
 		
 	} /* end reduce */
 
