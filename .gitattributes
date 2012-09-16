@@ -1,1 +1,12 @@
 * text=auto !eol
+HBaseMR/pom.xml -text
+HBaseMR/src/main/java/net/cryp7/range/HBaseMR/Driver.java -text
+HBaseMR/src/main/java/net/cryp7/range/HBaseMR/Ingest.java -text
+HBaseMR/src/main/java/net/cryp7/range/HBaseMR/MyMapper.java -text
+HBaseMR/src/main/java/net/cryp7/range/HBaseMR/MyReducer.java -text
+WordCountMR/input/bar.txt -text
+WordCountMR/input/foo.txt -text
+WordCountMR/pom.xml -text
+WordCountMR/src/main/java/net/cryp7/range/WordCountMR/Driver.java -text
+WordCountMR/src/main/java/net/cryp7/range/WordCountMR/MyMapper.java -text
+WordCountMR/src/main/java/net/cryp7/range/WordCountMR/MyReducer.java -text
