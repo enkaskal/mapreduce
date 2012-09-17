@@ -8,11 +8,11 @@ HBaseMR/src/main/java/net/cryp7/range/HBaseMR/MyReducer.java -text
 HRun/pom.xml -text
 HRun/src/main/java/net/cryp7/range/HRun/ConfigFile.java -text
 HRun/src/main/java/net/cryp7/range/HRun/Main.java -text
+HRun/wordcount.properties -text
 WordCountMR/LICENSE.txt -text
-WordCountMR/hrun.properties -text
 WordCountMR/input/bar.txt -text
 WordCountMR/input/foo.txt -text
 WordCountMR/pom.xml -text
+WordCountMR/src/main/java/net/cryp7/range/WordCountMR/Main.java -text
 WordCountMR/src/main/java/net/cryp7/range/WordCountMR/MyMapper.java -text
 WordCountMR/src/main/java/net/cryp7/range/WordCountMR/MyReducer.java -text
-WordCountMR/src/main/java/net/cryp7/range/WordCountMR/WordCountMR.java -text
