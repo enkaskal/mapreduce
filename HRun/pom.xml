@@ -39,7 +39,7 @@
 							<transformers>
 								<transformer
 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>net.cryp7.range.WordCountMR.Main</mainClass>
+									<mainClass>net.cryp7.range.HRun.Main</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>

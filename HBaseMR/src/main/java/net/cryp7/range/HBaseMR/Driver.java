@@ -22,13 +22,14 @@ public class Driver
 	public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException 
 	{
 		Configuration conf = HBaseConfiguration.create();
-		conf.set("fs.default.name", "hdfs://hadoop.range.cryp7.net:8020");
+		conf.set("fs.defaultFS", "hdfs://hadoop.range.cryp7.net:8020");
 		conf.set("hbase.zookeeper.quorum", "hadoop.range.cryp7.net");
 		conf.set("hbase.zookeeper.property.clientPort", "2181");
 		conf.set("hbase.master", "hadoop.range.cryp7.net:60000");
 		conf.set("mapred.job.tracker", "hadoop.range.cryp7.net:8021");
 		
-        Job job = new Job(conf, "HBaseMR");
+        Job job = new Job(conf);
+        job.setJobName("HBaseMR");
         job.setJarByClass(MyMapper.class);
         
         Scan scan = new Scan();
