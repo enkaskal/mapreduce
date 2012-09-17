@@ -9,4 +9,5 @@ HRun/target
 WordCountMR/.classpath
 WordCountMR/.project
 WordCountMR/.settings
+WordCountMR/dependency-reduced-pom.xml
 WordCountMR/target
