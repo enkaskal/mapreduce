@@ -2,6 +2,10 @@ HBaseMR/.classpath
 HBaseMR/.project
 HBaseMR/.settings
 HBaseMR/target
+HRun/.classpath
+HRun/.project
+HRun/.settings
+HRun/target
 WordCountMR/.classpath
 WordCountMR/.project
 WordCountMR/.settings
