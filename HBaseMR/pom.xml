@@ -4,7 +4,7 @@
 
 	<groupId>net.cryp7.range</groupId>
 	<artifactId>HBaseMR</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>HBaseMR</name>
@@ -39,7 +39,7 @@
 							<transformers>
 								<transformer
 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>net.cryp7.range.HBaseMR.Driver</mainClass>
+									<mainClass>net.cryp7.range.mapreduce.HBaseMR</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>
@@ -69,32 +69,9 @@
 			<version>2.0.0-mr1-cdh4.0.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.zookeeper</groupId>
-			<artifactId>zookeeper</artifactId>
-			<version>3.4.3-cdh4.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>commons-httpclient</groupId>
-			<artifactId>commons-httpclient</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase</artifactId>
 			<version>0.92.1-cdh4.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.16</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-httpclient</groupId>
-			<artifactId>commons-httpclient</artifactId>
-			<version>3.1</version>
 		</dependency>
 	</dependencies>
 </project>

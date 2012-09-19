@@ -1,4 +1,4 @@
-package net.cryp7.range.HBaseMR;
+package net.cryp7.range.mapreduce;
 
 import java.io.IOException;
 import java.util.Random;

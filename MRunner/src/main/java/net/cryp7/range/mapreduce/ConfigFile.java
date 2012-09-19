@@ -1,4 +1,4 @@
-package net.cryp7.range.HRun;
+package net.cryp7.range.mapreduce;
 
 import java.io.FileInputStream;
 import java.io.IOException;

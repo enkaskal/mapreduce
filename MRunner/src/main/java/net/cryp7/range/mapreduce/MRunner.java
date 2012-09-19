@@ -1,9 +1,10 @@
-package net.cryp7.range.HRun;
+package net.cryp7.range.mapreduce;
 
 import org.apache.hadoop.util.RunJar;
 
-public class Main 
+public class MRunner 
 {
+	private static final String appName = "net.range.cryp7.MRunner";
 
 	/**
 	 * @param args
@@ -13,7 +14,7 @@ public class Main
 		/* tell user how to run; if need be */
 		if ( 1 != args.length )
 		{
-			System.err.println("Usage: HRun /path/to/config/file");
+			System.err.println("Usage: " + appName + " /path/to/config/file");
 			System.exit(1);
 		}
 
@@ -64,7 +65,7 @@ public class Main
 
 	} /* end main */
 	
-} /* end class Main */
+} /* end class MRunner */
 
 /* EOF */
 
