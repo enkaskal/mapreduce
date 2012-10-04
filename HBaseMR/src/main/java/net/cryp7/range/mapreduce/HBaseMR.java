@@ -15,9 +15,75 @@ import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.mapreduce.Job;
 
+/* based on http://sujee.net/tech/articles/hadoop/hbase-map-reduce-freq-counter/ */
 public class HBaseMR 
 {
-	private static final String appName = "net.cryp7.range.HBaseMR";
+	private static final String appName = "HBaseMR";
+	private static final String version = "0.0.3-SNAPSHOT-jar-with-dependencies";
+	private Job job = null;
+	
+	/**
+	 * @param args
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 * @throws InterruptedException 
+	 */
+	public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException 
+	{
+		HBaseMR mr = new HBaseMR();
+        
+        mr.run();
+        
+        System.out.println("done.");
+
+	} /* end main */
+	
+	public HBaseMR() throws IOException
+	{
+		Configuration conf = HBaseConfiguration.create();
+		conf.set("fs.default.name", "hdfs://hadoop.range.cryp7.net:8020");
+		conf.set("hbase.master", "hadoop.range.cryp7.net:60000");
+		conf.set("hbase.zookeeper.quorum", "hadoop.range.cryp7.net");
+		conf.set("hbase.zookeeper.property.clientPort", "2181");
+		conf.set("mapred.job.tracker", "hadoop.range.cryp7.net:8021");
+		conf.set("mapred.jar", System.getProperty("java.io.tmpdir") + "/" + appName + "-" + version + ".jar");
+		
+        job = new Job(conf);
+        job.setJobName("HBaseMR");
+        
+        @SuppressWarnings("unused")
+		String jar = job.getJar();
+        
+        Scan scan = new Scan();
+        scan.setCacheBlocks(true);
+        scan.setCaching(5000);
+        
+        TableMapReduceUtil.initTableMapperJob(
+        		"access_logs", 
+        		scan, 
+        		MyMapper.class, 
+        		ImmutableBytesWritable.class,
+                IntWritable.class, 
+                job,
+                false
+        );
+        
+        TableMapReduceUtil.initTableReducerJob(
+        		"summary_user",
+        		MyReducer.class, 
+        		job
+        );
+        
+	} /* end ctor */
+	
+	public void run() throws IOException, InterruptedException, ClassNotFoundException
+	{
+		if (false == job.waitForCompletion(true)) 
+		{
+			System.out.println("job failed");
+		}
+
+	} /* end run */
 	
 	public static class MyMapper extends TableMapper<ImmutableBytesWritable, IntWritable>
 	{
@@ -61,54 +127,6 @@ public class HBaseMR
 	    }
 
 	} /* end class MyReducer */
-
-	/**
-	 * @param args
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
-	 * @throws InterruptedException 
-	 */
-	public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException 
-	{
-		Configuration conf = HBaseConfiguration.create();
-		conf.set("fs.defaultFS", "hdfs://hadoop.range.cryp7.net:8020");
-		conf.set("hbase.zookeeper.quorum", "hadoop.range.cryp7.net");
-		conf.set("hbase.zookeeper.property.clientPort", "2181");
-		conf.set("hbase.master", "hadoop.range.cryp7.net:60000");
-		conf.set("mapred.job.tracker", "hadoop.range.cryp7.net:8021");
-		
-        Job job = new Job(conf);
-        job.setJobName("HBaseMR");
-        job.setJarByClass(MyMapper.class);
-        
-        Scan scan = new Scan();
-        scan.setCacheBlocks(true);
-        scan.setCaching(5000);
-        
-        TableMapReduceUtil.initTableMapperJob(
-        		"access_logs", 
-        		scan, 
-        		MyMapper.class, 
-        		ImmutableBytesWritable.class,
-                IntWritable.class, 
-                job,
-                false
-        );
-        
-        TableMapReduceUtil.initTableReducerJob(
-        		"summary_user",
-        		MyReducer.class, 
-        		job
-        );
-        
-        if ( false == job.waitForCompletion(true) )
-        {
-        	System.out.println("job fuct");
-        }
-        
-        System.out.println("done.");
-
-	} /* end main */
 
 } /* end class HBaseMR */
 

@@ -2,12 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>net.cryp7.range</groupId>
-	<artifactId>MRunner</artifactId>
+	<groupId>net.cryp7.range.mapreduce.MRunner</groupId>
+	<artifactId>net.cryp7.range.mapreduce.MRunner</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>MRunner</name>
+	<name>net.cryp7.range.mapreduce.MRunner</name>
 	<url>http://tucker.range.cryp7.net</url>
 
 	<properties>

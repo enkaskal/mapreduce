@@ -1,10 +1,13 @@
+/*.zip
 HBaseMR/.classpath
 HBaseMR/.project
 HBaseMR/.settings
+HBaseMR/dependency-reduced-pom.xml
 HBaseMR/target
 MRunner/.classpath
 MRunner/.project
 MRunner/.settings
+MRunner/dependency-reduced-pom.xml
 MRunner/target
 WordCountMR/.classpath
 WordCountMR/.project
