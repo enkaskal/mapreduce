@@ -1,4 +1,5 @@
 /*.zip
+/.metadata
 HBaseMR/.classpath
 HBaseMR/.project
 HBaseMR/.settings
