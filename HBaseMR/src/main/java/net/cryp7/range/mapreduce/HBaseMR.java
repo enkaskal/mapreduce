@@ -41,12 +41,12 @@ public class HBaseMR
 	public HBaseMR() throws IOException
 	{
 		Configuration conf = HBaseConfiguration.create();
-		conf.set("fs.default.name", "hdfs://hadoop.range.cryp7.net:8020");
-		conf.set("hbase.master", "hadoop.range.cryp7.net:60000");
-		conf.set("hbase.zookeeper.quorum", "hadoop.range.cryp7.net");
-		conf.set("hbase.zookeeper.property.clientPort", "2181");
-		conf.set("mapred.job.tracker", "hadoop.range.cryp7.net:8021");
-		conf.set("mapred.jar", System.getProperty("java.io.tmpdir") + "/" + appName + "-" + version + ".jar");
+//		conf.set("fs.default.name", "hdfs://hadoop.range.cryp7.net:8020");
+//		conf.set("hbase.master", "hadoop.range.cryp7.net:60000");
+//		conf.set("hbase.zookeeper.quorum", "hadoop.range.cryp7.net");
+//		conf.set("hbase.zookeeper.property.clientPort", "2181");
+//		conf.set("mapred.job.tracker", "hadoop.range.cryp7.net:8021");
+//		conf.set("mapred.jar", System.getProperty("java.io.tmpdir") + "/" + appName + "-" + version + ".jar");
 		
         job = new Job(conf);
         job.setJobName("HBaseMR");
